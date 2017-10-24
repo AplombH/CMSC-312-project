@@ -3,7 +3,7 @@
  *
  * @author APLOMB
  */
-public class Sim {
+public class StorageSim {
 
     
     
