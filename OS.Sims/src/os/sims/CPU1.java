@@ -29,85 +29,89 @@ public class CPU1 {
     private int counter4 = 20;
            
     
-    public CPU1(){}
+    public CPU1(){fillNull();}
     
-    public String checker ()
-    { 
-        return "available resource: \n core1 tred1:" + counter1 + 
-                "\n core1 tred2" + counter2+
-                "\n core2 tred1" + counter3 +
-                "\n core2 tred2" + counter4;
+    public int checker (int i)
+    {  int n = 0;
+        if (i == 1){n = counter1 ;}
+        else if (i == 2){n = counter2;}
+        else if (i == 3){n = counter3;}
+        else if (i == 4){n = counter4;}
+        
+        return n;
     }
     
-    public void addProcess1 (String str)
-    { int i = 0; boolean flag = true;
-        do{
-            if (Core1Thred1[i].equals(null)){Core1Thred1[i] = "str"; counter1 --; flag = false;}
+    public void fillNull()
+    {int i;
+        for(i=0; i<20; i++)
+        {Core1Thred1[i] = "null";
+         Core1Thred2[i] = "null";
+         Core2Thred1[i] = "null";
+         Core2Thred2[i] = "null";
+        }
+    }
+    
+    public void addProcess (int n, String str)
+    { 
+        int i = 0; boolean flag = true;
+        
+         if (n == 1){do{
+            if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; flag = false;}
             else i++;
         
-        }while(flag);
+        }while(flag);}
+         
+        else if (n == 2){do{
+            if (Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter2--; flag = false;}
+            else i++;
+        
+        }while(flag);}
+        
+        else if (n == 3){do{
+            if (Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter3--; flag = false;}
+            else i++;
+        
+        }while(flag);}
+        
+        else if (n == 4){ do{
+            if (Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter4--; flag = false;}
+            else i++;
+        
+        }while(flag);}
+        
     }
      
-    public void addProcess2 (String str)
-    { int i = 0; boolean flag = true;
-        do{
-            if (Core1Thred2[i].equals(null)){Core1Thred1[i] = "str"; counter2--; flag = false;}
-            else i++;
-        
-        }while(flag);
-    }
     
-    public void addProcess3 (String str)
+    public void delProcess (int n, String str)
     { int i = 0; boolean flag = true;
-        do{
-            if (Core2Thred1[i].equals(null)){Core1Thred1[i] = "str"; counter3--; flag = false;}
-            else i++;
-        
-        }while(flag);
-    }
     
-    public void addProcess4 (String str)
-    { int i = 0; boolean flag = true;
-        do{
-            if (Core2Thred2[i].equals(null)){Core1Thred1[i] = "str"; counter4--; flag = false;}
-            else i++;
-        
-        }while(flag);
-    }
-    
-    public void delProcess1 (String str)
-    { int i = 0; boolean flag = true;
-        do{
+      if (n == 1){ do{
             if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; flag = false;}
             else i++;
         
-        }while(flag);
-    }
-     
-    public void delProcess2 (String str)
-    { int i = 0; boolean flag = true;
-        do{
+        }while(flag);}
+      
+        else if (n == 2){do{
             if (Core1Thred2[i].equals(str)){Core1Thred2[i] = "null"; counter2 ++; flag = false;}
             else i++;
         
-        }while(flag);
-    }
-    
-    public void delProcess3 (String str)
-    { int i = 0; boolean flag = true;
-        do{
+        }while(flag);}
+        
+        else if (n == 3){do{
             if (Core2Thred1[i].equals(str)){Core2Thred1[i] = "null"; counter3++; flag = false;}
             else i++;
         
-        }while(flag);
-    }
-    
-    public void delProcess4 (String str)
-    { int i = 0; boolean flag = true;
-        do{
+        }while(flag);}
+        
+        else if (n == 4){do{
             if (Core2Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter4++; flag = false;}
             else i++;
         
-        }while(flag);
+        }while(flag);}
+    
+    
+       
     }
+     
+    
 }

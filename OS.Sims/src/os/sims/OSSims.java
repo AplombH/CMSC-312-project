@@ -18,6 +18,20 @@ public class OSSims {
         // TODO code application logic here
         
         CPU1 cpu1 = new CPU1();
+        
+        
+        cpu1.addProcess(1,"P1");
+        
+         System.out.println("updated resources: core1 tred1: " + cpu1.checker(1));
+         
+         cpu1.delProcess( 1 ,"P1");
+         
+          System.out.println("updated resources: core1 tred1: " + cpu1.checker(1));
+        
+        
+        
+        
+        
     }
     
 }
