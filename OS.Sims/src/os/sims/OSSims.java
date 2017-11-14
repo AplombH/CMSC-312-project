@@ -22,9 +22,32 @@ public class OSSims {
         
         cpu1.addProcess(1,"P1");
         
+        cpu1.addProcess(1, "P4");
+        
          System.out.println("updated resources: core1 tred1: " + cpu1.checker(1));
          
-         cpu1.delProcess( 1 ,"P1");
+         cpu1.addProcess(2, "P2");
+         
+         System.out.println("updated resources: core1 tred2: " + cpu1.checker(2));
+         
+        // cpu1.addProcess(3, "P3");
+         
+         //cpu1.addProcess(3, "P5");
+         
+         System.out.println("updated resources: core2 tred1: " + cpu1.checker(3));
+         
+        // cpu1.addProcess(4, "P6");
+         
+         //cpu1.addProcess(4, "p7");
+         
+        // cpu1.addProcess(4, "P8");
+         
+         System.out.println("updated resources: core2 tred2: " + cpu1.checker(4));
+         
+         
+         System.out.println(cpu1.getMax());
+         
+         cpu1.delProcess(1,"P1");
          
           System.out.println("updated resources: core1 tred1: " + cpu1.checker(1));
         

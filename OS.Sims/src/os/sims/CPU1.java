@@ -53,65 +53,66 @@ public class CPU1 {
     
     public void addProcess (int n, String str)
     { 
-        int i = 0; boolean flag = true;
+        int i; 
         
-         if (n == 1){do{
-            if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; flag = false;}
-            else i++;
+        for (i = 0; i <20; i++){
         
-        }while(flag);}
-         
-        else if (n == 2){do{
-            if (Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter2--; flag = false;}
-            else i++;
+         if (n == 1){ if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
+
+         else if (n == 2){if (Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter2--;break;}}
+
+        else if (n == 3){if (Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter3--; break;}}
         
-        }while(flag);}
-        
-        else if (n == 3){do{
-            if (Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter3--; flag = false;}
-            else i++;
-        
-        }while(flag);}
-        
-        else if (n == 4){ do{
-            if (Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter4--; flag = false;}
-            else i++;
-        
-        }while(flag);}
-        
+        else if (n == 4){if (Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter4--; break;}}
+        } 
     }
      
     
     public void delProcess (int n, String str)
-    { int i = 0; boolean flag = true;
+    { int i; 
+        
+        for (i = 0; i <20; i++){
+        
+         if (n == 1){ if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; break;}}
+
+         else if (n == 2){if (Core1Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter2++;break;}}
+
+        else if (n == 3){if (Core2Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter3++; break;}}
+        
+        else if (n == 4){if (Core2Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter4++; break;}}
+        }
+        
     
-      if (n == 1){ do{
-            if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; flag = false;}
-            else i++;
-        
-        }while(flag);}
-      
-        else if (n == 2){do{
-            if (Core1Thred2[i].equals(str)){Core1Thred2[i] = "null"; counter2 ++; flag = false;}
-            else i++;
-        
-        }while(flag);}
-        
-        else if (n == 3){do{
-            if (Core2Thred1[i].equals(str)){Core2Thred1[i] = "null"; counter3++; flag = false;}
-            else i++;
-        
-        }while(flag);}
-        
-        else if (n == 4){do{
-            if (Core2Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter4++; flag = false;}
-            else i++;
-        
-        }while(flag);}
-    
-    
-       
     }
+    
+    public int getMax()
+    {int n = 0;
+    
+     if(counter1 >= counter2)
+     {n = 1;
+         if (counter1 >= counter3){n = 1; 
+                                   if (counter1 >= counter4){n = 1;}
+                                   else {n = 4;} 
+                                  }
+         else{n = 3;  
+              if(counter3>= counter4){n = 3;} 
+              else{n = 4;} 
+             }
+     }
+     else{n = 2;
+           if(counter2 >= counter3){n =2;
+                                    if (counter2 >= counter4){n = 2;}
+                                    else {n = 4;}
+                                   }
+           
+           else{n = 3;
+                if(counter3 >= counter4){n = 3;}
+                else {n = 4;}
+              }
+           } 
+         
+        
+        return n; }
      
     
 }
