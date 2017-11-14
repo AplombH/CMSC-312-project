@@ -59,11 +59,11 @@ public class CPU1 {
         
          if (n == 1){ if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
 
-         else if (n == 2){if (Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter2--;break;}}
+         else if (n == 2){if (Core1Thred2[i].equals("null")){Core1Thred2[i] = str; counter2--;break;}}
 
-        else if (n == 3){if (Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter3--; break;}}
+        else if (n == 3){if (Core2Thred1[i].equals("null")){Core2Thred1[i] = str; counter3--; break;}}
         
-        else if (n == 4){if (Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter4--; break;}}
+        else if (n == 4){if (Core2Thred2[i].equals("null")){Core2Thred2[i] = str; counter4--; break;}}
         } 
     }
      
@@ -75,15 +75,16 @@ public class CPU1 {
         
          if (n == 1){ if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; break;}}
 
-         else if (n == 2){if (Core1Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter2++;break;}}
+         else if (n == 2){if (Core1Thred2[i].equals(str)){Core1Thred2[i] = "null"; counter2++;break;}}
 
-        else if (n == 3){if (Core2Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter3++; break;}}
+        else if (n == 3){if (Core2Thred1[i].equals(str)){Core2Thred1[i] = "null"; counter3++; break;}}
         
-        else if (n == 4){if (Core2Thred2[i].equals(str)){Core1Thred1[i] = "null"; counter4++; break;}}
+        else if (n == 4){if (Core2Thred2[i].equals(str)){Core2Thred2[i] = "null"; counter4++; break;}}
         }
         
     
     }
+    
     
     public int getMax()
     {int n = 0;
@@ -114,5 +115,10 @@ public class CPU1 {
         
         return n; }
      
+    public void printArray()
+    { int i;
+        for(i = 0; i <20; i++ ){
+        System.out.println(Core1Thred1[i]);}
+    }
     
 }
