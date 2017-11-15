@@ -12,21 +12,21 @@ package os.sims;
 public class CPU1 {
 
     
-    private String [] Core1Thred1 = new String [20];
+    private String [] Core1Thred1 = new String [32];
     
-    private String [] Core1Thred2 = new String [20];
+    private String [] Core1Thred2 = new String [32];
     
-    private String [] Core2Thred1 = new String [20];
+    private String [] Core2Thred1 = new String [32];
     
-    private String [] Core2Thred2 = new String [20];
+    private String [] Core2Thred2 = new String [32];
     
-    private int counter1 = 20;
+    private int counter1 = 32;
     
-    private int counter2 = 20;
+    private int counter2 = 32;
     
-    private int counter3 = 20;
+    private int counter3 = 32;
     
-    private int counter4 = 20;
+    private int counter4 = 32;
            
     
     public CPU1(){fillNull();}
@@ -43,7 +43,7 @@ public class CPU1 {
     
     public void fillNull()
     {int i;
-        for(i=0; i<20; i++)
+        for(i=0; i<32; i++)
         {Core1Thred1[i] = "null";
          Core1Thred2[i] = "null";
          Core2Thred1[i] = "null";
@@ -55,7 +55,7 @@ public class CPU1 {
     { 
         int i; 
         
-        for (i = 0; i <20; i++){
+        for (i = 0; i <32; i++){
         
          if (n == 1){ if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
 
@@ -71,7 +71,7 @@ public class CPU1 {
     public void delProcess (int n, String str)
     { int i; 
         
-        for (i = 0; i <20; i++){
+        for (i = 0; i <32; i++){
         
          if (n == 1){ if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; break;}}
 
@@ -117,7 +117,7 @@ public class CPU1 {
      
     public void printArray()
     { int i;
-        for(i = 0; i <20; i++ ){
+        for(i = 0; i <32; i++ ){
         System.out.println(Core1Thred1[i]);}
     }
     

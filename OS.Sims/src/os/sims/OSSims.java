@@ -19,6 +19,8 @@ public class OSSims {
         
         CPU1 cpu1 = new CPU1();
         
+        Memory mem = new Memory();
+        
         
         cpu1.addProcess(1,"P1");
                
@@ -40,6 +42,7 @@ public class OSSims {
           System.out.println("updated resources: core1 tred1: " + cpu1.checker(2));
           
         
+         
         
         
         
