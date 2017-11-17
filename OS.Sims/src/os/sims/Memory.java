@@ -23,8 +23,12 @@ public class Memory {
     
     public Memory(){}
     
-    public int converter(int n)
+    public int converter(String str, int n)
     { int quote = 0;
+        
+        if(str.equalsIgnoreCase("mb")){n= n*1000;}
+    
+    
         if(n%64 == 0){quote = n/64;}
         else{quote = (n/64)+1; }
         
@@ -35,6 +39,8 @@ public class Memory {
     {
         return Ram + VRam;
     }
+    
+    
     
     
 }
