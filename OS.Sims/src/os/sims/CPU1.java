@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package os.sims;
 
 /**
@@ -53,22 +49,62 @@ public class CPU1 {
     
     public void addProcess (int n, String str)
     { 
-        int i; 
+        int i, j; j = n/4;
         
-        for (i = 0; i <32; i++){
+        for(i = 0; i<j; i++){
         
-         if (n == 1){ if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
+        for (i = 0; i <30; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
 
-         else if (n == 2){if (Core1Thred2[i].equals("null")){Core1Thred2[i] = str; counter2--;break;}}
+        for (i = 0; i <30; i++){if (Core1Thred2[i].equals("null")){Core1Thred2[i] = str; counter2--;break;}}
 
-        else if (n == 3){if (Core2Thred1[i].equals("null")){Core2Thred1[i] = str; counter3--; break;}}
+        for (i = 0; i <30; i++){if (Core2Thred1[i].equals("null")){Core2Thred1[i] = str; counter3--; break;}}
         
-        else if (n == 4){if (Core2Thred2[i].equals("null")){Core2Thred2[i] = str; counter4--; break;}}
+        for (i = 0; i <30; i++){if (Core2Thred2[i].equals("null")){Core2Thred2[i] = str; counter4--; break;}}
         } 
+        
+        j = n%4;
+        
+        for(i = 0; i<j; i++)
+        { if (getMax() == 1){for (i = 0; i <30; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+        
+          else if (getMax() == 2){for (i = 0; i <30; i++){if(Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+          
+          else if (getMax() == 3){for (i = 0; i <30; i++){if(Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+          
+          else if (getMax() == 4){for (i = 0; i <30; i++){if(Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+        }
     }
      
     
-    public void delProcess (int n, String str)
+     public void io2Process (int n, String str)
+    { 
+         int i, j; j = n/4;
+        
+        for(i = 0; i<j; i++){
+        
+        for (i = 0; i <32; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
+
+        for (i = 0; i <32; i++){if (Core1Thred2[i].equals("null")){Core1Thred2[i] = str; counter2--;break;}}
+
+        for (i = 0; i <32; i++){if (Core2Thred1[i].equals("null")){Core2Thred1[i] = str; counter3--; break;}}
+        
+        for (i = 0; i <32; i++){if (Core2Thred2[i].equals("null")){Core2Thred2[i] = str; counter4--; break;}}
+        } 
+        
+        j = n%4;
+        
+        for(i = 0; i<j; i++)
+        { if (getMax() == 1){for (i = 0; i <32; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+        
+          else if (getMax() == 2){for (i = 0; i <32; i++){if(Core1Thred2[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+          
+          else if (getMax() == 3){for (i = 0; i <32; i++){if(Core2Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+          
+          else if (getMax() == 4){for (i = 0; i <32; i++){if(Core2Thred2[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}}
+        }
+    }
+    
+    public void io4Process (int n, String str)
     { int i; 
         
         for (i = 0; i <32; i++){
@@ -82,7 +118,6 @@ public class CPU1 {
         else if (n == 4){if (Core2Thred2[i].equals(str)){Core2Thred2[i] = "null"; counter4++; break;}}
         }
         
-    
     }
     
     
