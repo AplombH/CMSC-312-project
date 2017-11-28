@@ -11,18 +11,20 @@ package os.sims;
  */
 public class Timer {
     
-    private int times;
+    private double time;
       
     public Timer(){}
     
-    public void setCounter( int t)
-    { times = t;}
+    public void startTimer()
+    { time = 0;}
     
-    public int getCounter(String str)
-    {return times;}
+    public double getTimer()
+    {return time;}
     
-    public void updateCounter(int t)
-    {times = times - t;}
+    public void updateTimer(int t)
+    {time = time + 3 + (t*0.05);}
+    
+    public void resetTimmer(){time = 0;}
     
     
     
