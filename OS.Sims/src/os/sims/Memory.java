@@ -65,6 +65,6 @@ public class Memory {
      public void rm4Vram(int m)// give back available virtual memory due to the removal of process
     {VRam = VRam + m;}
     
-    
+    public int getRam(){return Ram;}
     
 }

@@ -11,16 +11,24 @@ public class OSSims {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        int n = 0, io = 0;
         
         CPU1 cpu1 = new CPU1();
         
         Memory mem = new Memory();
         
+        if(mem.getRam()>200000){}
         
-        cpu1.addProcess(15,"P1");
+        if (cpu1.getThred() > 8){
+        cpu1.addProcess(n,"P1");
         
          cpu1.addProcess(15, "P2");
+        
+         cpu1.addProcess(21, "P2");}
+         
+        
+        
+         cpu1.io2Process(io, "io");
          
          
          

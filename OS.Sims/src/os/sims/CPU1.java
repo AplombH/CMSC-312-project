@@ -49,9 +49,9 @@ public class CPU1 {
     
     public void addProcess (int n, String str)
     { 
-        int i, j; j = n/4;
+        int i, j, k; j = n/4;
         
-        for(i = 0; i<j; i++){
+        for(k = 0; k<j; k++){
         
         for (i = 0; i <30; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
 
@@ -78,9 +78,9 @@ public class CPU1 {
     
      public void io2Process (int n, String str)
     { 
-         int i, j; j = n/4;
+         int i, j, k; j = n/4;
         
-        for(i = 0; i<j; i++){
+        for(k = 0; k<j; k++){
         
         for (i = 0; i <32; i++){if(Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1 --; break;}}
 
@@ -105,21 +105,23 @@ public class CPU1 {
     }
     
     public void io4Process (int n, String str)
-    { int i; 
+    { int i,j, k; j = (n/4)+1;
         
-        for (i = 0; i <32; i++){
+        for (k = 0; k <j; k++){
         
-         if (n == 1){ if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; break;}}
+         for (i = 0; i <32; i++){ if (Core1Thred1[i].equals(str)){Core1Thred1[i] = "null"; counter1 ++; break;}}
 
-         else if (n == 2){if (Core1Thred2[i].equals(str)){Core1Thred2[i] = "null"; counter2++;break;}}
+         for (i = 0; i <32; i++){if (Core1Thred2[i].equals(str)){Core1Thred2[i] = "null"; counter2++;break;}}
 
-        else if (n == 3){if (Core2Thred1[i].equals(str)){Core2Thred1[i] = "null"; counter3++; break;}}
+        for (i = 0; i <32; i++){if (Core2Thred1[i].equals(str)){Core2Thred1[i] = "null"; counter3++; break;}}
         
-        else if (n == 4){if (Core2Thred2[i].equals(str)){Core2Thred2[i] = "null"; counter4++; break;}}
+        for (i = 0; i <32; i++){if (Core2Thred2[i].equals(str)){Core2Thred2[i] = "null"; counter4++; break;}}
         }
         
     }
     
+    public int getThred()
+    {         return counter1+counter2+counter3+counter4;    }
     
     public int getMax()
     {int n = 0;
