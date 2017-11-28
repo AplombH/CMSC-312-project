@@ -48,17 +48,12 @@ public class CPU1 {
     }
     
     
-    
-   
-
-
-    
     public void addProcess (int n, String str)
     { 
-         Thread1 threadA = new Thread1(Core1Thred1, str,counter1);
-    Thread2 threadB = new Thread2(Core1Thred2, str,counter2);
-    Thread3 threadC = new Thread3(Core2Thred1, str,counter3);
-    Thread4 threadD = new Thread4(Core2Thred2, str,counter4);
+      Thread1 threadA = new Thread1(Core1Thred1, str,counter1);
+      Thread2 threadB = new Thread2(Core1Thred2, str,counter2);
+      Thread3 threadC = new Thread3(Core2Thred1, str,counter3);
+      Thread4 threadD = new Thread4(Core2Thred2, str,counter4);
         int i, j, k; j = n/4;
         
         for(k = 0; k<j; k++){
