@@ -19,7 +19,7 @@ public class Memory {
     
     public Memory(){}
     
-    public int converter(String str, int n)
+    public int converter(String str, int n) // conver mb to kb
     { int quote = 0;
         
         if(str.equalsIgnoreCase("mb")){n= n*1000;}
@@ -48,11 +48,22 @@ public class Memory {
     public void io4Mem (int n)
     { Ram = Ram + n;}       
     
-    public int mCounter ()
+    public int mCounter () // checking the available overall memory
     {
         return Ram + VRam;
     }
     
+    public void add2Ram(int m) // reduce available ram due to the adding of process
+    {Ram = Ram - m;}
+    
+    public void add2Vram(int m)// reduce available virtual memory due to the adding of process
+    {VRam = VRam - m;}
+    
+    public void rm4Ram(int m)// give back available ram due to the removal of process
+    {Ram = Ram + m;}
+    
+     public void rm4Vram(int m)// give back available virtual memory due to the removal of process
+    {VRam = VRam + m;}
     
     
     

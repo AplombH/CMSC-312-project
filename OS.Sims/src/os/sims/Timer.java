@@ -12,13 +12,17 @@ package os.sims;
 public class Timer {
     
     private int times;
-    
-    private String process;
-    
+      
     public Timer(){}
     
-    public void setCounter(String str, int t)
-    {process = str; times = t;}
+    public void setCounter( int t)
+    { times = t;}
+    
+    public int getCounter(String str)
+    {return times;}
+    
+    public void updateCounter(int t)
+    {times = times - t;}
     
     
     
