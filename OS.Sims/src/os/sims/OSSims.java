@@ -1,5 +1,6 @@
 
 package os.sims;
+import java.util.Scanner;
 
 /**
  *
@@ -18,7 +19,7 @@ public class OSSims {
         boolean go = false; boolean flag = false;
         
         CPU1 cpu1 = new CPU1();
-        
+       
         Memory mem = new Memory();
         
         
@@ -73,7 +74,10 @@ public class OSSims {
          
          
          
-         
+        //Start of Simulation
+        while (1) {
+        	Scanner input = new (System.in)
+        }
     }
     
 }
