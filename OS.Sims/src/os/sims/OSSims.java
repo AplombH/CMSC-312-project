@@ -1,16 +1,62 @@
+/**
+ * @author Aaron Kim, Aplomb Huang, Fofini
+ * CMSC 312 Fall 2017 Project
+ * OS simulation
+ * This project is to simulate an OS's key components
+ * This is the Main class with basic text file input and output.
+ * All classes will be under the os.sims package in order to work
+ */
+
 
 package os.sims;
 
-/**
- *
- * @author APLOMB
- */
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 public class OSSims {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        
+         // The name of the file to open.
+        String str = ""; 
+         
+        String fileName = str + ".txt";
+
+        // This will reference one line at a time
+        String line = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = 
+                new FileReader(fileName);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+               // here is the operation of where we store the information in the line
+            }   
+
+            // Always close files.
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+        
         int n = 0, io = 0, procCycle = 0, ioCycle = 0, cycles = 0;
         
         int procCount = 0;
