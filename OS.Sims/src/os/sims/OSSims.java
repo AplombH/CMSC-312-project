@@ -1,6 +1,7 @@
 
 package os.sims;
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -70,14 +71,45 @@ public class OSSims {
         
        
          
-         
-         
+                 
          
          
         //Start of Simulation
         while (1) {
         	Scanner input = new (System.in)
         }
+    }
+    
+    //Randomizer, from GUI add number of Cycles, which makes and adds proccesses according to number of cycles.
+    public void randomizer(int randomCycle){
+    	Random rand = new Random();
+    	int i =0;
+    	int  randNum = rand.nextInt(10) + 1;
+		String randpName; 
+		String randpCPUtime; 	
+		String randpMainMemory; 
+		String randparentProcess;
+		String randpState;
+    	while (i < randomCycle) {
+    		randpName = (String) randNum;
+    		randNum = rand.nextInt(10) + 1;
+    		
+    		randpCPUtime = (String) randNum;	
+    		randNum = rand.nextInt(10) + 1;
+    		
+    		randpMainMemory = (String) randNum;
+    		randNum = rand.nextInt(10) + 1;
+    		
+    		//randparentProcess
+    		
+    		randpState = (String) randNum;
+    		randNum = rand.nextInt(10) + 1;
+    		
+    		//What ever calls the object....Seems to cannot find it....
+    		
+    		i++;;
+    		System.out.println ("Number of Cycles " + i);
+    	}  	
     }
     
 }
