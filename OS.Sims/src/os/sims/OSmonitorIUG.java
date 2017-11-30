@@ -1,3 +1,5 @@
+package os.sims;
+
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
