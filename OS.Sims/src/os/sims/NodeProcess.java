@@ -33,6 +33,7 @@ public class NodeProcess{
 	//State, NEW, READY, WAIT, RUN, EXIT
 	private String  pState;
 	private int numCycles;
+	private boolean critStatus = false;
 
 	//num of cycles it has gone thruo
 
@@ -121,6 +122,14 @@ public class NodeProcess{
 	public void setNumCycles(int moreCycles){
 		this.numCycles = numCycles + moreCycles;
 
+	}
+	
+	public boolean getCritStatus() {
+		return critStatus;
+	}
+	
+	public void setCritStatus() {
+		this.critStatus = true;
 	}
 
 	public String toString(){
