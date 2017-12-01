@@ -1,5 +1,4 @@
 package os.sims;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -33,6 +32,7 @@ public class NodeProcess{
 	private String 	parentProcess;
 	//State, NEW, READY, WAIT, RUN, EXIT
 	private String  pState;
+	private int numCycles;
 
 	//num of cycles it has gone thruo
 
@@ -48,6 +48,7 @@ public class NodeProcess{
 		//this.iodevices	 	= "";
 		this.parentProcess	= "";
 		this.pState			= "";
+		this.numCycles		= 0;
 	}
 
 	public NodeProcess(String data){
@@ -60,6 +61,7 @@ public class NodeProcess{
 		//this.iodevices		= st.nextToken();
 		this.parentProcess 	= st.nextToken();
 		this.pState 		= st.nextToken();
+		//this.numCycles		= st.nextToken();
 	}
 
 	//Accesors
@@ -87,6 +89,9 @@ public class NodeProcess{
 	public NodeProcess getNext(){
 		return this.next;
 	}
+	public int getNumCycles(){
+		return this.numCycles;
+	}
 
 	//Mutators
 	public void setPName(String strPName){
@@ -112,6 +117,10 @@ public class NodeProcess{
 	}
 	public void setNext(NodeProcess node){
 		this.next = node;
+	}
+	public void setNumCycles(int moreCycles){
+		this.numCycles = numCycles + moreCycles;
+
 	}
 
 	public String toString(){

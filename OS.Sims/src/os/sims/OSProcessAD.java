@@ -70,12 +70,19 @@ public class OSProcessAD{
 		String data = "";
 		int currentValue;
 
+		actual.setNumCycles(1);
+
 		reduce = Integer.parseInt(JOptionPane.showInputDialog("Give the quantity: "));
 		currentValue = Integer.parseInt(actual.getPCPUtime());
 
-		actual.setPCPUtime(Integer.toString(currentValue - reduce));
+		currentValue = currentValue - reduce;
 
-		data = "The CPU time was reduced";
+		if(currentValue <= 0)
+			data = terminateProcess();
+		else
+			actual.setPCPUtime(Integer.toString(currentValue - reduce));
+
+		data = data +"\nThe CPU time was reduced";
 
 		return data;
 	}
