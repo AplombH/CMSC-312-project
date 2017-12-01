@@ -2,16 +2,11 @@
 package os.sims;
 
 /**
- *
  * @author APLOMB
  */
 public class Memory {
     
-//    private int cache1 = 64;
-//    
-//    private int cache2 = 256;
-//    
-//    private int cache3 = 2048;
+
     
     private int Ram = 4096000;
     
@@ -30,7 +25,7 @@ public class Memory {
         
         return quote;}
     
-    public void add2Mem(int n)
+    public void add2Mem(int n) // add process and reduce ram or/and virtual memory
     {  if(n >= 20000){Ram = Ram - 20000; VRam = VRam - (n-20000);}
        else{Ram = Ram - n;}
     
@@ -39,13 +34,13 @@ public class Memory {
     public void io2Mem (int n)
     { Ram = Ram - n;    }
     
-    public void del4Mem(int n)
+    public void del4Mem(int n) // remove process and add teh ram back
     {  if(n >= 20000){Ram = Ram + 20000; VRam = VRam + (n-20000);}
        else{Ram = Ram + n;}
     
     }
     
-    public void io4Mem (int n)
+    public void io4Mem (int n) // remove the interrupt from memory and give back the available space
     { Ram = Ram + n;}       
     
     public int mCounter () // checking the available overall memory
@@ -53,17 +48,7 @@ public class Memory {
         return Ram + VRam;
     }
     
-    public void add2Ram(int m) // reduce available ram due to the adding of process
-    {Ram = Ram - m;}
-    
-    public void add2Vram(int m)// reduce available virtual memory due to the adding of process
-    {VRam = VRam - m;}
-    
-    public void rm4Ram(int m)// give back available ram due to the removal of process
-    {Ram = Ram + m;}
-    
-     public void rm4Vram(int m)// give back available virtual memory due to the removal of process
-    {VRam = VRam + m;}
+   public int getVRam(){return VRam;}
     
     public int getRam(){return Ram;}
     
