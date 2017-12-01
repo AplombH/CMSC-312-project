@@ -18,7 +18,7 @@ public class CPU extends Thread {
 
 	public CPU() {	} // defult constructor
 
-	public CPU(String[] Core1Thred1, String str, int counter1) {
+	public CPU( String str, int counter1) {
 		// this.Core1Thred1 = Core1Thred1;
 		this.counter1 = counter1;
 		this.str = str;
