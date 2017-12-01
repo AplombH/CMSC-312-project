@@ -304,23 +304,35 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 			int randpState;
 			//String data = "";
 			
-			int randNum = rand.nextInt(10) + 1;
-			randpName = randNum;
-			
-			randNum = rand.nextInt(10) + 1;
-			randpCPUtime = randNum;
-			
-			randNum = rand.nextInt(10) + 1;
-			randpMainMem = randNum;
-			
-			randNum = rand.nextInt(10) + 1;
-			randpParent = randNum;
+			int randNum;
+			//String data = "";
+			int num  = Integer.parseInt(JOptionPane.showInputDialog("Quantity of Random Process: "));
+			for (int i=0; i < num; i++){
 
-			randNum = rand.nextInt(4) + 1;
-			randpState = randNum;
-			
-			data = "process" +randpName + "_" + randpCPUtime + "_" + randpMainMem + "_parent" + randpParent + "_" + randpState;
-			processAD.capture(data);
+				randNum = rand.nextInt(10) + 1;
+				randpName = randNum;
+				
+				randNum = rand.nextInt(10) + 1;
+				randpCPUtime = randNum;
+				
+				randNum = rand.nextInt(10) + 1;
+				randpMainMem = randNum;
+				
+				randNum = rand.nextInt(10) + 1;
+				randpParent = randNum;
+
+				randNum = rand.nextInt(4) + 1;
+				randpState = randNum;
+				
+				data = "process" +randpName + "_" + randpCPUtime + "_" + randpMainMem + "_parent" + randpParent + "_" + randpState;
+				answer = processAD.capture(data);
+
+				if(answer.equals("NO_SPACE")){
+					i = num;
+					taData.setText("NO SPACE, MEMORY FULL!");
+				}
+			}
+			//taData.setText("Random Process created!");	
 			
 		}
 
