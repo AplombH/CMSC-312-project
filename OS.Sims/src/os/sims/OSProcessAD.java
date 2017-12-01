@@ -189,4 +189,11 @@ public class OSProcessAD{
 		return "Process Terminated";
 
 	}
+        
+        public String add2CPU()
+        {String state = "Ready";
+         //CPU cpu1 = new CPU(NodeProcess.cputime);
+          state = "Run";
+            return state;
+        }
 }

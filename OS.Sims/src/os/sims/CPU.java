@@ -2,7 +2,6 @@
 package os.sims;
 
 /**
- *
  * @author Aaron
  */
 public class CPU extends Thread {
