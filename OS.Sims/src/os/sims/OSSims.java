@@ -38,7 +38,13 @@ public class OSSims {
         
         Timer ioTime = new Timer();
         
+     //  cpu1.addProcess(17, "Process1");
        
+        
+        System.out.println(cpu1.getThred());
+        
+        System.out.println(cpu1.getMax());
+        
         
    //     do{
             
