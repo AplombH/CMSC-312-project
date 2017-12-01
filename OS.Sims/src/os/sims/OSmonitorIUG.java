@@ -231,8 +231,8 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		}
 	}
 
-	public static void main(String args[]){
-		OSmonitorIUG  osmonitor = new OSmonitorIUG();
-	}
+//	public static void main(String args[]){
+//		OSmonitorIUG  osmonitor = new OSmonitorIUG();
+//	}
 
 }
