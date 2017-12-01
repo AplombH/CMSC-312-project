@@ -1,11 +1,8 @@
 package os.sims;
-
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
 import java.awt.*;
-
-
 
 public class OSProcessAD{
 	private BufferedReader archiveEnter;
@@ -14,25 +11,7 @@ public class OSProcessAD{
 	private NodeProcess first, last, actual;
 	private NodeProcess previous;
 
-	/*public String capturar(String datos)
-	{
-		if(primero == null)
-		{
-			primero = new NodoBanco(datos);
-			ultimo = primero;
-			ultimo.setNext(null);
-		}
-		else
-		{
-			actual = new NodoBanco(datos);
-			ultimo.setNext(actual);   // ultimo.next = actual; // Enlace de nodos
-			ultimo = actual;
-			ultimo.setNext(null);
-		}
-		return "Cuenta Creada: "+datos;
-	}*/
-
-	public String captureSave(String data){
+	public String capture(String data){
 
 		if(first == null){
 			first = new NodeProcess(data);
@@ -76,7 +55,7 @@ public class OSProcessAD{
 		String data = "";
 
 		if(first == null)
-			data = "No Processes on the list";
+			data = "No Processes on the Main Memory";
 		else{
 			actual = first;
 			while(actual != null){
@@ -87,27 +66,40 @@ public class OSProcessAD{
 		return data;
 	}
 
-	/*public String consultProcess(String process)
+	public String reduceCPUtime(int reduce){
+		String data = "";
+		int currentValue;
+
+		reduce = Integer.parseInt(JOptionPane.showInputDialog("Give the quantity: "));
+		currentValue = Integer.parseInt(actual.getPCPUtime());
+
+		actual.setPCPUtime(Integer.toString(currentValue - reduce));
+
+		data = "The CPU time was reduced";
+
+		return data;
+	}
+
+	public String consultNameProcess(String process)
 	{
 		String data="";
 		boolean find = false;
 		
 		if(first == null)
-			data = "VACIO";
+			data = "EMPTY";
 		else
 		{
 			actual   = first;
-			anterior = first;
+			previous = first;
 			
-			while(actual != null && !encontrado)
+			while(actual != null && !find)
 			{
-				if(process.equals(process.getName()))
+				if(process.equals(actual.getPName()))
 				{
-					data = data + actual.toString() + "\n";
+					data = actual.toString();
 					find = true;
 				}
-				else
-				{
+				else{
 					previous = actual;
 					actual = actual.getNext();	
 				}				
@@ -116,7 +108,73 @@ public class OSProcessAD{
 				data = "NOT_FIND";
 		}		
 		return data;
-	}*/
+	}
 
+	public String consultParentProcess(String parent)
+	{
+		String data = "";
+		boolean find = false;
 
+		if(first == null)
+			data = "No process in Main Memory";
+		else
+		{
+			actual = first;
+
+			while(actual != null)
+			{
+				if(parent.equals(actual.getParentProcess()))
+				{
+					data = data + actual.toString() + "\n";
+					find = true;
+				}
+				actual = actual.getNext();
+			}
+
+			if(!find)
+				data = "None with that Parent: " + parent;
+		}
+		return data;
+	}
+
+	public String obtainDataTxt(){
+		String response = "";
+		String data = "";
+
+		try{
+			archiveEnter = new BufferedReader(new FileReader("Processes.txt"));
+
+			try{
+				while((data = archiveEnter.readLine()) != null)
+				{
+					response = capture(data);
+				}
+				response = "Data read correctly from the txt";
+			}
+			catch(IOException ioe){
+				response = "Error: " + ioe;
+			}
+		}
+		catch(FileNotFoundException fe){
+			response = "Error: FileNotFoundException\n" +fe;
+		}
+		return response;
+	}
+
+	public String terminateProcess(){
+		if(first == actual)
+			first = first.getNext();
+		else
+		{
+			if(last == actual)
+			{
+				last = previous;
+				last.setNext(null);
+			}
+			else
+				previous.setNext(actual.getNext());
+		}
+		return "Process Terminated";
+
+	}
 }
