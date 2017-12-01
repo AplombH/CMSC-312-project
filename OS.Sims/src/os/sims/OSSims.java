@@ -16,13 +16,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class OSSims {
 
+  private OSmonitorIUG  monIUG = new OSmonitorIUG();
+
     public static void main(String[] args) {
-        
-       // OSmonitorIUG  osmonitor = new OSmonitorIUG();
         
         int n = 0, io = 0, procCycle = 0, ioCycle = 0, cycles = 0;
         
