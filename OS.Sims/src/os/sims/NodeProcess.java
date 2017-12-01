@@ -45,7 +45,7 @@ public class NodeProcess{
 		return pCPUtimeInt;
 	}
 	
-	public void setPCPUtime(int cpuNum){
+	public void setPCPUtimeInt(int cpuNum){
 		
 		this.pCPUtime = Integer.toString(cpuNum);
 	}
