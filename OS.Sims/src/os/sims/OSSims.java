@@ -22,7 +22,7 @@ public class OSSims {
 
     public static void main(String[] args) {
         
-       // OSmonitorIUG  osmonitor = new OSmonitorIUG();
+       //OSmonitorIUG  osmonitor = new OSmonitorIUG();
         
         int n = 0, io = 0, procCycle = 0, ioCycle = 0, cycles = 0;
         
@@ -42,7 +42,7 @@ public class OSSims {
      
      Thread1 t1 = new Thread1();
      
-     t1.run();
+    t1.run();
        
         
         System.out.println(cpu1.getThred());
