@@ -57,6 +57,7 @@ public class OSProcessAD{
 
 		memOfPro = Integer.parseInt(str);
 		mem = memory.mCounter() - 200000;
+                
 
 		//this is Parent Process, it can be INTERRUPT
 		str  = st.nextToken();
@@ -65,7 +66,7 @@ public class OSProcessAD{
 			data = capture2(data);
 		}
 		else{
-			if(mem >= memOfPro){
+			if(mem >= memOfPro && memory.getRam() > 200000){
 				data = capture2(data);
 			}
 			else{
