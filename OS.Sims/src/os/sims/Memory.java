@@ -4,6 +4,15 @@ package os.sims;
 /**
  * @author APLOMB
  */
+
+/*Memory Algorithm
+**When theres a new process in the link list,
+**we check if the total memory has enough space according the size of the new process
+**then we check if there's space in main memory(ram), reserved 200 mb in ram to run interrupts
+**if the above 2 checks out. Process changes from new state to ready state, else process stays in new state
+**we pass the process and this state to cpu to handle.
+*/
+
 public class Memory {
     
 

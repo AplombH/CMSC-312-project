@@ -1,5 +1,5 @@
 /**
- * @author Aaron Kim, Aplomb Huang, Fofini
+ * @author Aaron Kim, Aplomb Huang, Fofini Parry
  * CMSC 312 Fall 2017 Project
  * OS simulation
  * This project is to simulate an OS's key components
@@ -19,15 +19,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
  /*process algorithm: 
-    **system runs in loops, the loop will not exit until exit button is hit, boolean exit = false;
-    **everytime a process is read, check memory size, if there's enough memory , load the process in memory, half in ram, half in virtual memory, 
-     **state turn from new to ready
-     **if there's enough cpu resource to run the process, process pass to thread to run, state turn into run
-     **if there's interrupt, the rest of the process will pause and turn into wait state, interrupt will be loaded to memory, and the thread, execute and terminate
-     ** the rest of the process resumes, run till no cpu time left, process terminate. or user choose to terminate it early
-     **
-    **
-    */
+ **system runs in loops, the loop will not exit until exit button is hit, boolean exit = false;
+ **everytime a process is read, check memory size, if there's enough memory , load the process in memory, half in ram, half in virtual memory, 
+ **state turn from new to ready
+ **if there's enough cpu resource to run the process, process pass to thread to run, state turn into run
+ **if there's interrupt, the rest of the process will pause and turn into wait state, interrupt will be loaded to memory, and the thread, execute and terminate
+ **the rest of the process resumes, run till no cpu time left, process terminate. or user choose to terminate it early
+ */
 
 public class OSSims {
 
