@@ -5,7 +5,7 @@ package os.sims;
  *
  * @author APLOMB
  */
-public class CPU1 {
+public class CPU1 extends Thread {
 
     
     private String [] Core1Thred1 = new String [32];
