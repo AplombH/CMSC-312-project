@@ -16,9 +16,7 @@ public class CPU extends Thread {
 	private NodeProcess run3 = new NodeProcess();
 	private NodeProcess run4 = new NodeProcess();
 
-	public CPU() {
-
-	}
+	public CPU() {	} // defult constructor
 
 	public CPU(String[] Core1Thred1, String str, int counter1) {
 		// this.Core1Thred1 = Core1Thred1;
