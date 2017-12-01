@@ -20,60 +20,30 @@ public class OSSims {
 
     public static void main(String[] args) {
         
-         // The name of the file to open.
-        String str = ""; 
-         
-        String fileName = str + ".txt";
-
-        // This will reference one line at a time
-        String line = null;
-
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
-                new FileReader(fileName);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
-
-            while((line = bufferedReader.readLine()) != null) {
-               // here is the operation of where we store the information in the line
-            }   
-
-            // Always close files.
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'");                  
-            // Or we could just do this: 
-            // ex.printStackTrace();
-        }
         
         int n = 0, io = 0, procCycle = 0, ioCycle = 0, cycles = 0;
         
-        int procCount = 0;
+        int procCount = 0; String str = "";
         
-        boolean go = false; boolean flag = false;
+        boolean go = false; boolean flag = false; boolean exit = false; boolean newFile = false;
         
         CPU1 cpu1 = new CPU1();
         
         Memory mem = new Memory();
-        
-        
-        
+              
         Timer procTime = new Timer();
         
         Timer ioTime = new Timer();
         
+       
+        
+        do{
+            
+            textReader(str);
+            
         //check system condition before new process is input to the system
+        
+        //main program will run in loops until the exit signal is sent to it.
         
         if(mem.getRam()>200000){flag = true;}
         
@@ -113,13 +83,47 @@ public class OSSims {
          
          }
         
-       
+        if(newFile){textReader(str);}//if in the UI, user select read new file, then the method will run.
+        
+        }while(exit);
          
-         
-         
-         
-         
-         
+    }
+    
+    public static void textReader(String str)
+    {
+         String fileName = str + ".txt"; // The name of the file to open.
+
+        // This will reference one line at a time
+        String line = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = 
+                new FileReader(fileName);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+               // here is the operation of where we store the information in the line
+            }   
+
+            // Always close files.
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
     }
     
 }
