@@ -5,6 +5,8 @@ import java.io.*;
 import java.awt.event.*;
 import java.awt.*;
 
+import java.util.StringTokenizer;
+
 /*
 **@author Fofini
 */
@@ -15,21 +17,63 @@ public class OSProcessAD{
 
 	private NodeProcess first, last, actual;
 	private NodeProcess previous;
+	private Memory memory = new Memory();
+	private int mem, memOfPro;
+	private String str;
+	private StringTokenizer st;
 
-	public String capture(String data){
+	public String capture2(String data){
 
 		if(first == null){
-			first = new NodeProcess(data);
-			last = first;
-			last.setNext(null);
+				first = new NodeProcess(data);
+				last = first;
+				last.setNext(null);
+
+				mem  = Integer.parseInt(first.getPMainMemory());
+				memory.add2Mem(mem*1000);
+			}
+			else{
+				actual = new NodeProcess(data);
+				last.setNext(actual);
+				last = actual;
+				last.setNext(null);
+
+				mem  = Integer.parseInt(actual.getPMainMemory());
+				memory.add2Mem(mem*1000);
+			}
+
+		str = Integer.toString(memory.mCounter());
+		return "Process Created: " + data + "\nthe ram is:" + str;
+	}
+
+	public String capture(String data){
+		st = new StringTokenizer(data,"_");
+		//this is name
+		str = st.nextToken();
+		//this is CPU time
+		str = st.nextToken();
+		//this is Main memory
+		str = st.nextToken();
+
+		memOfPro = Integer.parseInt(str);
+		mem = memory.mCounter() - 200000;
+
+		//this is Parent Process, it can be INTERRUPT
+		str  = st.nextToken();
+
+		if(str.equals("INTERRUPT")){
+			data = capture2(data);
 		}
 		else{
-			actual = new NodeProcess(data);
-			last.setNext(actual);
-			last = actual;
-			last.setNext(null);
+			if(mem >= memOfPro){
+				data = capture2(data);
+			}
+			else{
+				data = "NO_SPACE";
+			}
 		}
-		return "Process Created: " + data;
+		
+		return data;
 	}
 //This is a test
 	public String saveOnTextFile(){
@@ -160,6 +204,8 @@ public class OSProcessAD{
 				while((data = archiveEnter.readLine()) != null)
 				{
 					response = capture(data);
+					if(response.equals("NO_SPACE"))
+						return response;
 				}
 				response = "Data read correctly from the txt";
 			}
@@ -174,6 +220,9 @@ public class OSProcessAD{
 	}
 
 	public String terminateProcess(){
+
+		memory.del4Mem(Integer.parseInt(actual.getPMainMemory()));
+		
 		if(first == actual)
 			first = first.getNext();
 		else
