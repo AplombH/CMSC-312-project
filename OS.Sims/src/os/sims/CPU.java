@@ -1,9 +1,9 @@
 
-//package os.sims;
+package os.sims;
 
 /**
  *
- * @author Aplomb
+ * @author Aaron
  */
 public class CPU extends Thread {
 	// private int i;

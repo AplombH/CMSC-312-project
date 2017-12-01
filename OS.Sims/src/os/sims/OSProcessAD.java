@@ -1,8 +1,13 @@
 package os.sims;
+
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
 import java.awt.*;
+
+/*
+**@author Fofini
+*/
 
 public class OSProcessAD{
 	private BufferedReader archiveEnter;
