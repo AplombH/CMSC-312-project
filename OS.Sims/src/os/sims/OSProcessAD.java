@@ -247,4 +247,11 @@ public class OSProcessAD{
           state = "Run";
             return state;
         }
+
+    public String consultMem(){
+		str = "Ram is :" + memory.getVRam() +
+		 "\n VRam is :" + memory.getVRam();
+
+		return str; 
+	}
 }

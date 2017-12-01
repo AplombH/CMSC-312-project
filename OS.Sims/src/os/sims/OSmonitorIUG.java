@@ -27,7 +27,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 
 	private JButton bCreaP, bCreaIn, bTerminate, bExit;
 	private JButton bNewTxt, bCreaRand, bConsult, bConsultByName;
-	private JButton bReduceCPUtime, bConsByParentP;
+	private JButton bReduceCPUtime, bConsByParentP, bShowMem;
 	private JTextArea taData, taMonitor;
 
 	private OSProcessAD processAD = new OSProcessAD();
@@ -60,6 +60,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		bConsultByName = new JButton("Search by Name");
 		bConsByParentP = new JButton("Search by Parent");
 		bReduceCPUtime = new JButton("Reduce CPUtime");
+		bShowMem	= new JButton("Show Memory");
 
 		bCreaP.addActionListener(this);
 		bCreaIn.addActionListener(this);
@@ -70,6 +71,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		bConsultByName.addActionListener(this);
 		bConsByParentP.addActionListener(this);
 		bReduceCPUtime.addActionListener(this);
+		bShowMem.addActionListener(this);
 
 		taData = new JTextArea(10,10);
 		taMonitor = new JTextArea(32,50);
@@ -105,6 +107,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		panel1.add(bTerminate);
 		panel1.add(bCreaRand);
 		panel1.add(bReduceCPUtime);
+		panel1.add(bShowMem);
 		panel1.add(bExit); 
 
 		//panel3.add(panelProcessTracker);
@@ -335,6 +338,10 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 			}
 			//taData.setText("Random Process created!");	
 			
+		}
+		if(e.getSource() == bShowMem){
+			answer = processAD.consultMem();
+			taData.setText(answer);
 		}
 
 		if(e.getSource() == bExit)
