@@ -30,7 +30,7 @@ public class OSProcessAD{
 				last.setNext(null);
 
 				mem  = Integer.parseInt(first.getPMainMemory());
-				memory.add2Mem(mem*1000);
+				memory.add2Mem(mem);
 			}
 			else{
 				actual = new NodeProcess(data);
@@ -39,7 +39,7 @@ public class OSProcessAD{
 				last.setNext(null);
 
 				mem  = Integer.parseInt(actual.getPMainMemory());
-				memory.add2Mem(mem*1000);
+				memory.add2Mem(mem);
 			}
 
 		str = Integer.toString(memory.mCounter());
@@ -223,7 +223,7 @@ public class OSProcessAD{
 
 	public String terminateProcess(){
 
-		memory.del4Mem(Integer.parseInt(actual.getPMainMemory())*1000);
+		memory.del4Mem(Integer.parseInt(actual.getPMainMemory()));
 		
 		if(first == actual)
 			first = first.getNext();
