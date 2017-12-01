@@ -38,6 +38,19 @@ public class NodeProcess{
 	private int numCycles;
 	private boolean critStatus = false;
 
+	//FOR THREAD CLASS - Converting String to Int
+	private int pCPUtimeInt;
+	public int getPCPUtimeInt() {
+		this.pCPUtimeInt = Integer.parseInt(pCPUtime);
+		return pCPUtimeInt;
+	}
+	
+	public void setPCPUtime(int cpuNum){
+		
+		this.pCPUtime = Integer.toString(cpuNum);
+	}
+	
+	
 	//num of cycles it has gone thruo
 
 
