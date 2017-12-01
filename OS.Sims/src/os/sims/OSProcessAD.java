@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 public class OSProcessAD{
 	private BufferedReader archiveEnter;
 	private PrintWriter archiveExit;
-        private CPU cpu1 = new CPU();
+    private CPU cpu1 = new CPU();
 	private NodeProcess first, last, actual;
 	private NodeProcess previous;
 	private Memory memory = new Memory();
@@ -56,8 +56,12 @@ public class OSProcessAD{
 		str = st.nextToken();
 
 		memOfPro = Integer.parseInt(str);
+<<<<<<< HEAD
 		mem = memory.mCounter() - 200000;
                 
+=======
+		mem = memory.getRam() - 200000;
+>>>>>>> 08fae7f7cf361001e33b74f92323d6170a68830b
 
 		//this is Parent Process, it can be INTERRUPT
 		str  = st.nextToken();
