@@ -35,8 +35,9 @@ public class Memory {
         return quote;}
     
     public void add2Mem(int n) // add process and reduce ram or/and virtual memory
-    {  if(n >= 20000){Ram = Ram - 20000; VRam = VRam - (n-20000);}
-       else{Ram = Ram - n;}
+    {  if(n >= 20000 ){Ram = Ram - 20000; VRam = VRam - (n-20000);}
+   
+    else{Ram = Ram - n;}
     
     }
     
