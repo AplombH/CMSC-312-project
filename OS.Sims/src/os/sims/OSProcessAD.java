@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 public class OSProcessAD{
 	private BufferedReader archiveEnter;
 	private PrintWriter archiveExit;
-
+        private CPU cpu1 = new CPU();
 	private NodeProcess first, last, actual;
 	private NodeProcess previous;
 	private Memory memory = new Memory();
@@ -221,7 +221,7 @@ public class OSProcessAD{
 
 	public String terminateProcess(){
 
-		memory.del4Mem(Integer.parseInt(actual.getPMainMemory()));
+		memory.del4Mem(Integer.parseInt(actual.getPMainMemory())*1000);
 		
 		if(first == actual)
 			first = first.getNext();
