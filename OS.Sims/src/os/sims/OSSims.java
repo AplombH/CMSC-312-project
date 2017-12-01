@@ -38,7 +38,11 @@ public class OSSims {
         
         Timer ioTime = new Timer();
         
-       cpu1.addProcess(17, "Process1");
+     //  cpu1.addProcess(17, "Process1");
+     
+     Thread1 t1 = new Thread1();
+     
+     t1.run();
        
         
         System.out.println(cpu1.getThred());

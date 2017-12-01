@@ -11,7 +11,7 @@ private String []Core1Thred1;
 int counter1;
 String str;
 
-    public Thread1(String [] Core1Thred1, String str, int counter1)
+    public Thread1()
     {
         this.Core1Thred1=Core1Thred1;
         this.counter1 = counter1;
