@@ -324,29 +324,29 @@ public class OSmonitorIUG extends JFrame implements ActionListener {
 		if (e.getSource() == bCreateRandom) {
 			Random rand = new Random();
 			//int randNum = rand.nextInt(10) + 1;
-			String randpName;
-			String randpCPUtime;
-			String randpMainMem;
-			String randpParent;
-			String randpState;
-			String data = "";
+			int randpName;
+			int randpCPUtime;
+			int randpMainMem;
+			int randpParent;
+			int randpState;
+			//String data = "";
 			
 			int randNum = rand.nextInt(10) + 1;
-			randpName = (String) randNum;
+			randpName = randNum;
 			
 			randNum = rand.nextInt(10) + 1;
-			randpCPUtime = (String) randNum;
+			randpCPUtime = randNum;
 			
 			randNum = rand.nextInt(10) + 1;
-			randpMainMemory = (String) randNum;
+			randpMainMem = randNum;
 			
 			randNum = rand.nextInt(10) + 1;
-			randpParent = (String) randNum;
+			randpParent = randNum;
 
 			randNum = rand.nextInt(4) + 1;
-			randpState = (String) randNum;
+			randpState = randNum;
 			
-			data = "process" +randpName + "_" + randpCPUTime + "_" + randpMainMem + "_parent" + randpParent + "_" + randpState;
+			data = "process" +randpName + "_" + randpCPUtime + "_" + randpMainMem + "_parent" + randpParent + "_" + randpState;
 			processAD.capture(data);
 		}
 

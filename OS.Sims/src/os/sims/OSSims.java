@@ -22,7 +22,7 @@ public class OSSims {
 
     public static void main(String[] args) {
         
-        OSmonitorIUG  osmonitor = new OSmonitorIUG();
+       // OSmonitorIUG  osmonitor = new OSmonitorIUG();
         
         int n = 0, io = 0, procCycle = 0, ioCycle = 0, cycles = 0;
         
@@ -38,7 +38,7 @@ public class OSSims {
         
         Timer ioTime = new Timer();
         
-     //  cpu1.addProcess(17, "Process1");
+       cpu1.addProcess(17, "Process1");
        
         
         System.out.println(cpu1.getThred());

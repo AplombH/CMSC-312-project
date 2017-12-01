@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package os.sims;
 
 /**
@@ -24,9 +20,40 @@ String str;
 
     public void run()
     {
-         for (i = 0; i <30; i++){if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1--;break;}}
+        
+ 
+            t1.start();
+            t2.start();
+// for (i = 0; i <30; i++){if (Core1Thred1[i].equals("null")){Core1Thred1[i] = str; counter1--;break;}}
 
     }
+    
+    // my first thread
+    Thread t1 = new Thread(){
+         public void run(){
+ 
+            for(int i = 1;i <= 5000;i++)
+            {
+                System.out.println(i);
+            }           
+         }
+     };
+    
+     // my second thread
+    Thread t2 = new Thread(){
+ 
+         public void run(){
+ 
+            for(int i = 5001;i <= 10000;i++)
+            {
+                System.out.println(i);
+            }           
+         }
+     };
+ 
+       
+           
+        
 
  
     
