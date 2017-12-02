@@ -329,10 +329,10 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 				randNum = rand.nextInt(10) + 1;
 				randpParent = randNum;
 
-				randNum = rand.nextInt(4) + 1;
-				randpState = randNum;
+				//randNum = rand.nextInt(4) + 1;
+				//randpState = randNum;
 				
-				data = "process" +randpName + "_" + randpCPUtime + "_" + randpMainMem + "_parent" + randpParent + "_" + randpState;
+				data = "process" +randpName + "_" + randpCPUtime + "_" + randpMainMem + "_parent" + randpParent + "_" + "NEW";
 				answer = processAD.capture(data);
 
 				if(answer.equals("NO_SPACE")){

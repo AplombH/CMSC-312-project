@@ -27,14 +27,23 @@ import java.util.TimerTask;
  **the rest of the process resumes, run till no cpu time left, process terminate. or user choose to terminate it early
  */
 
-public class OSSims {
+public class OSSims extends TimerTask{
 
   private OSmonitorIUG  monIUG = new OSmonitorIUG();
 
+  @Override
+  public void run(){
+  	monIUG.refreshMonitor();
+  }
+
     public static void main(String[] args) {
 
-     OSmonitorIUG  osmonitor = new OSmonitorIUG();
+    //OSmonitorIUG  osmonitor = new OSmonitorIUG();
+    OSSims ossims = new OSSims();
 
+     Timer timer = new Timer(true);
+
+     timer.scheduleAtFixedRate(ossims, 0, 5*1000);
     }
     
 }
