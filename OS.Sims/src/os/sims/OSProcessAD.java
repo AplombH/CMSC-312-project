@@ -1,5 +1,10 @@
 package os.sims;
 
+/*
+**@author Fofini Parry
+**add-on and edit by Aplomb and Aaron
+*/
+
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
@@ -7,9 +12,6 @@ import java.awt.*;
 
 import java.util.StringTokenizer;
 
-/*
-**@author Fofini
-*/
 
 public class OSProcessAD{
 	private BufferedReader archiveEnter;
@@ -21,6 +23,8 @@ public class OSProcessAD{
 	private int mem, memOfPro;
 	private String str;
 	private StringTokenizer st;
+        
+       private String state = "new";
 
 	public String capture2(String data){
 
@@ -30,7 +34,8 @@ public class OSProcessAD{
 				last.setNext(null);
 
 				mem  = Integer.parseInt(first.getPMainMemory());
-				memory.add2Mem(mem);
+				memory.add2Mem(mem); 
+                                first.setPState("Ready");
 			}
 			else{
 				actual = new NodeProcess(data);
@@ -40,6 +45,7 @@ public class OSProcessAD{
 
 				mem  = Integer.parseInt(actual.getPMainMemory());
 				memory.add2Mem(mem);
+                                actual.setPState("Ready");
 			}
 
 		str = Integer.toString(memory.mCounter());
@@ -57,7 +63,7 @@ public class OSProcessAD{
 
 		memOfPro = Integer.parseInt(str);
 
-		mem = memory.mCounter() - 200000;
+		mem = memory.mCounter() - 200000; // 200 mb is reserved for interrupts
 
 
 		//this is Parent Process, it can be INTERRUPT
@@ -67,11 +73,11 @@ public class OSProcessAD{
 			data = capture2(data);
 		}
 		else{
-			if(mem >= memOfPro && memory.getRam() >= 220000){
-				data = capture2(data);
+			if(mem >= memOfPro && memory.getRam() >= 220000){ // see if there's enough ram and total memory to run the process
+				data = capture2(data); 
 			}
 			else{
-				data = "NO_SPACE";
+				data = "NO_SPACE"; state = "new";
 			}
 		}
 		
@@ -117,7 +123,7 @@ public class OSProcessAD{
 		return data;
 	}
 
-	public String reduceCPUtime(int reduce){
+	public String reduceCPUtime(int reduce){ // it decrement the run cycle of processes
 		String data = "";
 		int currentValue;
 
@@ -242,7 +248,7 @@ public class OSProcessAD{
 	}
         
         public String add2CPU()
-        {String state = "Ready";
+        { state = "Ready";
          //CPU cpu1 = new CPU(NodeProcess.cputime);
           state = "Run";
             return state;

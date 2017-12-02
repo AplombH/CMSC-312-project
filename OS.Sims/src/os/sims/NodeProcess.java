@@ -1,4 +1,10 @@
 package os.sims;
+
+/*
+**author Fofini Parry
+**add-on and edit by Aaron Kim
+*/
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;

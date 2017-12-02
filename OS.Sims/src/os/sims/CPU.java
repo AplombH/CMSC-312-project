@@ -1,12 +1,10 @@
 package os.sims;
 
 /**
- *
- * @author Aplomb
+ * @author Aaron Kim
  */
 public class CPU extends Thread {
-	// private int i;
-	// private String[] Core1Thred1;
+	
 	int counter1;
 	String str;
 
@@ -22,7 +20,7 @@ public class CPU extends Thread {
 	}
 
 	public CPU(String[] Core1Thred1, String str, int counter1) {
-		// this.Core1Thred1 = Core1Thred1;
+		
 		this.counter1 = counter1;
 		this.str = str;
 	}
@@ -111,18 +109,15 @@ public class CPU extends Thread {
 
 	public void run() {
 
-		// int i = 0;
-		// while (i < counter) {
-		// System.out.println("BEFORE TEST: " + run1.toString());
+		
 		t1.start();
 		t2.start();
 		t3.start();
 		t4.start();
-		// i++;
-		// }
+		
 	}
 
-	// my first thread
+	// first thread
 	Thread t1 = new Thread() {
 
 		public void run() {
@@ -145,7 +140,7 @@ public class CPU extends Thread {
 		}
 	};
 
-	// my second thread
+	// second thread
 	Thread t2 = new Thread() {
 
 		public void run() {
