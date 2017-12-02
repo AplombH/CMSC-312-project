@@ -260,4 +260,16 @@ public class OSProcessAD{
 
 		return str; 
 	}
+
+	public String resetLinkedList(){
+		first = null;
+		last = null;
+		actual = null;
+		previous = null;
+
+		memory.resetMem();
+
+		return "Main Memory reseted";
+
+	}
 }
