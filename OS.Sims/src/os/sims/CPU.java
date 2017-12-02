@@ -1,21 +1,31 @@
-package os.sims;
+
+//package os.sims;
 
 /**
- * @author Aaron Kim
- * edited and add-on by Aplomb
+ *
+ * @author Aplomb
  */
 public class CPU extends Thread {
 
-	private NodeProcess run1 = null;//These simmulates the caches
+	private NodeProcess run1 = null;
 	private NodeProcess run2 = null;
 	private NodeProcess run3 = null;
 	private NodeProcess run4 = null;
+	private NodeProcess interrupt = null;
 
+	private boolean critOpen = true;
+	private boolean open1 = false;
+	private boolean open2 = false;
+	private boolean open3 = false;
+	private boolean open4 = false;
 
-	public CPU(){}// default constructor
-        
+	int counter = 200;
 
-	public void add(NodeProcess node1) {//here is to find the available cpu resource and load the process
+	public CPU() {
+
+	}
+
+	public void add(NodeProcess node1) {
 		if (run1 == null)
 			setRun1(node1);
 		else if (run2 == null)
@@ -26,13 +36,21 @@ public class CPU extends Thread {
 			setRun4(node1);
 	}
 
-	public boolean isFull() {//here is when the cpu recources are full
+	public void addInterrupt(NodeProcess nodeI) {
+		if (interrupt == null)
+			interrupt = nodeI;
+	}
+
+	public boolean isFull() {
 		if ((run1 == null) || (run2 == null) || (run3 == null) || (run4 == null))
 			return false;
 		else
 			return true;
 	}
 
+	public void setCounter(int count) {
+		this.counter = count;
+	}
 
 	/**
 	 * @return the run1
@@ -94,59 +112,128 @@ public class CPU extends Thread {
 		this.run4 = run4;
 	}
 
-	public void run() {
-
-		
-		t1.start();
-		t2.start();
-		t3.start();
-		t4.start();
-		
+	/**
+	 * @return the interrupt
+	 */
+	public NodeProcess getInterrupt() {
+		return interrupt;
 	}
 
-	// first thread
+	/**
+	 * @param interrupt
+	 *            the interrupt to set
+	 */
+	public void setInterrupt(NodeProcess interrupt) {
+		this.interrupt = interrupt;
+	}
+
+	public void run() {
+
+		// System.out.println("BEFORE TEST: " + run1.toString());
+		if (interrupt == null) {
+			t1.run();
+			t2.run();
+			t3.run();
+			t4.run();
+		}
+
+		// Pretend this is thread1
+		else {
+			int cpuTimeI = interrupt.getPCPUtimeInt();
+			cpuTimeI--;
+			interrupt.setPCPUtimeInt(cpuTimeI);
+			//System.out.println("CPU TIME LEFT: " + cpuTimeI);
+			//System.out.println("AFTER TEST INTERRUPT: " + interrupt.toString());
+			if (interrupt.getPCPUtimeInt() == 0) {
+				interrupt.setPState("EXIT");
+				interrupt = null;
+			}
+		}
+	}
+
+	// my first thread
 	Thread t1 = new Thread() {
 
 		public void run() {
 
 			if (run1 != null) {
-				// System.out.println("PAST IF LOOP");
-				int cpuTime1 = run1.getPCPUtimeInt();
-				// System.out.println("CPU TIME LEFT: " + cpuTime1);
-				cpuTime1--;
-				run1.setPCPUtimeInt(cpuTime1);
-				System.out.println("CPU TIME LEFT: " + cpuTime1);
-				System.out.println("AFTER TEST: " + run1.toString());
-				if (run1.getPCPUtimeInt() == 0) {
-					run1.setPState("EXIT");
-					run1 = null;
-					System.out.println("AFTER TEST: " + run1.toString());
+				//if (!run1.getCritStart())
+					//System.out.println("CRIT START IS FALSE");
+				if (run1.getCritStart() && critOpen) {
+					critOpen = false;
+					open1 = true;
+				}
+				if (run1.getCritStart() && open1) {
+					int cpuTime1 = run1.getPCPUtimeInt();
+					cpuTime1--;
+					run1.setPCPUtimeInt(cpuTime1);
+					//System.out.println("CPU TIME LEFT: " + cpuTime1);
+					//System.out.println("AFTER TEST: " + run1.toString());
+					if (!(run1.getCritStart())) {
+						critOpen = true;
+						System.out.println("THE GATE IS NOW OPEN1");
+						open1 = false;
+					}
+					if (run1.getPCPUtimeInt() == 0) {
+						run1.setPState("EXIT");
+						run1 = null;
+					}
+				} else if (!(run1.getCritStart())) {
+					int cpuTime1 = run1.getPCPUtimeInt();
+					cpuTime1--;
+					run1.setPCPUtimeInt(cpuTime1);
+					//System.out.println("CPU TIME LEFT: " + cpuTime1);
+					//System.out.println("AFTER TEST: " + run1.toString());
+					if (run1.getPCPUtimeInt() == 0) {
+						run1.setPState("EXIT");
+						run1 = null;
+					}
 				}
 			}
 			System.out.println("END OF THREAD 1");
 		}
 	};
 
-	// second thread
+	// my second thread
 	Thread t2 = new Thread() {
 
 		public void run() {
 
 			if (run2 != null) {
-				// System.out.println("PAST IF LOOP");
-				int cpuTime2 = run2.getPCPUtimeInt();
-				// System.out.println("CPU TIME LEFT: " + cpuTime1);
-				cpuTime2--;
-				run2.setPCPUtimeInt(cpuTime2);
-				//System.out.println("CPU TIME LEFT: " + cpuTime2);
-				//System.out.println("AFTER TEST: " + run2.toString());
-				if (run2.getPCPUtimeInt() == 0) {
-					run2.setPState("EXIT");
-					run2 = null;
+				//if (!run2.getCritStart())
+					//System.out.println("CRIT START IS FALSE");
+				if (run2.getCritStart() && critOpen) {
+					critOpen = false;
+					open2 = true;
+				}
+				if (run2.getCritStart() && open2) {
+					int cpuTime2 = run2.getPCPUtimeInt();
+					cpuTime2--;
+					run2.setPCPUtimeInt(cpuTime2);
+					//System.out.println("CPU TIME LEFT: " + cpuTime2);
 					//System.out.println("AFTER TEST: " + run2.toString());
+					if (!(run2.getCritStart())) {
+						critOpen = true;
+						System.out.println("THE GATE IS NOW OPEN2");
+						open2 = false;
+					}
+					if (run2.getPCPUtimeInt() == 0) {
+						run2.setPState("EXIT");
+						run2 = null;
+					}
+				} else if (!(run2.getCritStart())) {
+					int cpuTime2 = run2.getPCPUtimeInt();
+					cpuTime2--;
+					run2.setPCPUtimeInt(cpuTime2);
+					//System.out.println("CPU TIME LEFT: " + cpuTime2);
+					//System.out.println("AFTER TEST: " + run2.toString());
+					if (run2.getPCPUtimeInt() == 0) {
+						run2.setPState("EXIT");
+						run2 = null;
+					}
 				}
 			}
-			//System.out.println("END OF THREAD 2");
+			System.out.println("END OF THREAD 2");
 		}
 	};
 
@@ -154,22 +241,42 @@ public class CPU extends Thread {
 	Thread t3 = new Thread() {
 
 		public void run() {
-			//System.out.println("START OF THREAD 3");
+
 			if (run3 != null) {
-				// System.out.println("PAST IF LOOP");
-				int cpuTime3 = run3.getPCPUtimeInt();
-				// System.out.println("CPU TIME LEFT: " + cpuTime1);
-				cpuTime3--;
-				run3.setPCPUtimeInt(cpuTime3);
-				//System.out.println("CPU TIME LEFT: " + cpuTime3);
-				//System.out.println("AFTER TEST: " + run3.toString());
-				if (run3.getPCPUtimeInt() == 0) {
-					run3.setPState("EXIT");
-					run3 = null;
+				//if (!run3.getCritStart())
+					//System.out.println("CRIT START IS FALSE");
+				if (run3.getCritStart() && critOpen) {
+					critOpen = false;
+					open3 = true;
+				}
+				if (run3.getCritStart() && open3) {
+					int cpuTime3 = run3.getPCPUtimeInt();
+					cpuTime3--;
+					run3.setPCPUtimeInt(cpuTime3);
+					//System.out.println("CPU TIME LEFT: " + cpuTime3);
 					//System.out.println("AFTER TEST: " + run3.toString());
+					if (!(run3.getCritStart())) {
+						critOpen = true;
+						System.out.println("THE GATE IS NOW OPEN3");
+						open3 = false;
+					}
+					if (run3.getPCPUtimeInt() == 0) {
+						run3.setPState("EXIT");
+						run3 = null;
+					}
+				} else if (!(run3.getCritStart())) {
+					int cpuTime3 = run3.getPCPUtimeInt();
+					cpuTime3--;
+					run3.setPCPUtimeInt(cpuTime3);
+					//System.out.println("CPU TIME LEFT: " + cpuTime3);
+					//System.out.println("AFTER TEST: " + run3.toString());
+					if (run3.getPCPUtimeInt() == 0) {
+						run3.setPState("EXIT");
+						run3 = null;
+					}
 				}
 			}
-			//System.out.println("END OF THREAD 3");
+			System.out.println("END OF THREAD 3");
 		}
 	};
 
@@ -179,27 +286,43 @@ public class CPU extends Thread {
 		public void run() {
 
 			if (run4 != null) {
-				// System.out.println("PAST IF LOOP");
-				int cpuTime4 = run4.getPCPUtimeInt();
-				// System.out.println("CPU TIME LEFT: " + cpuTime1);
-				cpuTime4--;
-				run4.setPCPUtimeInt(cpuTime4);
-				//System.out.println("CPU TIME LEFT: " + cpuTime4);
-				//System.out.println("AFTER TEST: " + run4.toString());
-				if (run4.getPCPUtimeInt() == 0) {
-					run4.setPState("EXIT");
-					run4 = null;
+				//if (!run4.getCritStart())
+					//System.out.println("CRIT START IS FALSE");
+				if (run4.getCritStart() && critOpen) {
+					critOpen = false;
+					open4 = true;
+				}
+				if (run4.getCritStart() && open4) {
+					int cpuTime4 = run1.getPCPUtimeInt();
+					cpuTime4--;
+					run4.setPCPUtimeInt(cpuTime4);
+					//System.out.println("CPU TIME LEFT: " + cpuTime4);
 					//System.out.println("AFTER TEST: " + run4.toString());
+					if (!(run4.getCritStart())) {
+						critOpen = true;
+						if(critOpen)
+						System.out.println("THE GATE IS NOW OPEN4");
+						open4 = false;
+					}
+					if (run4.getPCPUtimeInt() == 0) {
+						run4.setPState("EXIT");
+						run4 = null;
+					}
+				} else if (!(run4.getCritStart())) {
+					int cpuTime4 = run4.getPCPUtimeInt();
+					cpuTime4--;
+					run4.setPCPUtimeInt(cpuTime4);
+					//System.out.println("CPU TIME LEFT: " + cpuTime4);
+					//System.out.println("AFTER TEST: " + run4.toString());
+					if (run4.getPCPUtimeInt() == 0) {
+						run4.setPState("EXIT");
+						run4 = null;
+					}
 				}
 			}
-			//System.out.println("END OF THREAD 4");
-
+			System.out.println("END OF THREAD 4");
 		}
 
 	};
-
-	public String working() {
-		return ("IT WORKS");
-	}
 
 }
