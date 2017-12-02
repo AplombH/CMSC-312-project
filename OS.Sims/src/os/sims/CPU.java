@@ -171,7 +171,7 @@ public class CPU extends Thread {
 					//System.out.println("AFTER TEST: " + run1.toString());
 					if (!(run1.getCritStart())) {
 						critOpen = true;
-						System.out.println("THE GATE IS NOW OPEN1");
+						//System.out.println("THE GATE IS NOW OPEN1");
 						open1 = false;
 					}
 					if (run1.getPCPUtimeInt() == 0) {
@@ -190,7 +190,7 @@ public class CPU extends Thread {
 					}
 				}
 			}
-			System.out.println("END OF THREAD 1");
+			//System.out.println("END OF THREAD 1");
 		}
 	};
 
@@ -214,7 +214,7 @@ public class CPU extends Thread {
 					//System.out.println("AFTER TEST: " + run2.toString());
 					if (!(run2.getCritStart())) {
 						critOpen = true;
-						System.out.println("THE GATE IS NOW OPEN2");
+						//System.out.println("THE GATE IS NOW OPEN2");
 						open2 = false;
 					}
 					if (run2.getPCPUtimeInt() == 0) {
@@ -233,7 +233,7 @@ public class CPU extends Thread {
 					}
 				}
 			}
-			System.out.println("END OF THREAD 2");
+			//System.out.println("END OF THREAD 2");
 		}
 	};
 
@@ -257,7 +257,7 @@ public class CPU extends Thread {
 					//System.out.println("AFTER TEST: " + run3.toString());
 					if (!(run3.getCritStart())) {
 						critOpen = true;
-						System.out.println("THE GATE IS NOW OPEN3");
+						//System.out.println("THE GATE IS NOW OPEN3");
 						open3 = false;
 					}
 					if (run3.getPCPUtimeInt() == 0) {
@@ -276,7 +276,7 @@ public class CPU extends Thread {
 					}
 				}
 			}
-			System.out.println("END OF THREAD 3");
+			//System.out.println("END OF THREAD 3");
 		}
 	};
 
@@ -301,7 +301,7 @@ public class CPU extends Thread {
 					if (!(run4.getCritStart())) {
 						critOpen = true;
 						if(critOpen)
-						System.out.println("THE GATE IS NOW OPEN4");
+						//System.out.println("THE GATE IS NOW OPEN4");
 						open4 = false;
 					}
 					if (run4.getPCPUtimeInt() == 0) {
@@ -320,7 +320,7 @@ public class CPU extends Thread {
 					}
 				}
 			}
-			System.out.println("END OF THREAD 4");
+			//System.out.println("END OF THREAD 4");
 		}
 
 	};
