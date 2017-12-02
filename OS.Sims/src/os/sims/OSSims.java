@@ -30,10 +30,11 @@ import java.util.TimerTask;
 public class OSSims extends TimerTask{
 
   private OSmonitorIUG  monIUG = new OSmonitorIUG();
+  int numOfCycles = Integer.parseInt(JOptionPane.showInputDialog("How many cycles do you wish to run?"));
 
   @Override
   public void run(){
-  	monIUG.refreshMonitor(); 
+  	numOfCycles = monIUG.refreshMonitor(numOfCycles); 
   }
 
     public static void main(String[] args) {

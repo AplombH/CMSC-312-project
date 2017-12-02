@@ -174,9 +174,20 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		return data;
 	}
 
-	public void refreshMonitor(){
-		String data = processAD.consult();
-		taMonitor.setText(data);
+	public void refreshMonitor(int numOfCycles){
+		String data = "";
+		//while(numOfCycles != 0){
+		if(numOfCycles != 0){
+			data = processAD.consult();
+			taMonitor.setText(data);
+			//HERE WE RUN THE CPU
+			numOfCycles = numOfCycles - 1;
+		}
+
+		if(numOfCycles == 0){
+			numOfCycles = Integer.parseInt(JOptionPane.showInputDialog("How many MORE cycles do yuo wish to have?"));
+		}
+		return numOfCycles;
 	}
 
 	public void actionPerformed(ActionEvent e)
