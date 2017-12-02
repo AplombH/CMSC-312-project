@@ -174,7 +174,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		return data;
 	}
 
-	public void refreshMonitor(int numOfCycles){
+	public int refreshMonitor(int numOfCycles){
 		String data = "";
 		//while(numOfCycles != 0){
 		if(numOfCycles != 0){

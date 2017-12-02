@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
  /*process algorithm: 
  **system runs in loops, the loop will not exit until exit button is hit, boolean exit = false;
@@ -44,7 +45,7 @@ public class OSSims extends TimerTask{
 
      Timer timer = new Timer(true);
 
-     timer.scheduleAtFixedRate(ossims, 0, 5*1000);
+     timer.scheduleAtFixedRate(ossims, 0, 2*1000);
     }
     
 }
