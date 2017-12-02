@@ -163,6 +163,15 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 				if(interrupt == false)
 					data = pName+"_"+pCPUTime+"_"+pMainMem+"_"+pParent+"_"+pState;
 				else{
+                                      if(Integer.parseInt(pCPUTime)< 25 ){ pCPUTime = "25";}// if cpu cycle is less than 25, convert to 25.
+                                      else{if(Integer.parseInt(pCPUTime)>50){pCPUTime = "50";} // if cpu cycle is greater than 50, conver to 50
+                                        
+                                      } 
+                                      
+                                      if(Integer.parseInt(pMainMem)< 1 ){ pMainMem = "20";}// if io memory is less than 1, convert to 20 kb.
+                                      else{if(Integer.parseInt(pMainMem)>200000){pMainMem = "200000";}// if io memory is greater than 200 mb, conver to 200
+                                      } 
+                                    
 					data = pName+"_"+pCPUTime+"_"+pMainMem+"_"+"INTERRUPT"+"_"+pState;
 				}
 			}
