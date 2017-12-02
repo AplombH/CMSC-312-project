@@ -77,6 +77,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		bConsByParentP.addActionListener(this);
 		bReduceCPUtime.addActionListener(this);
 		bShowMem.addActionListener(this);
+		bReset.addActionListener(this);
 
 		taData = new JTextArea(10,10);
 		taMonitor = new JTextArea(32,50);
@@ -111,7 +112,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		panel1.add(bConsByParentP);
 		panel1.add(bTerminate);
 		panel1.add(bCreaRand);
-		panel1.add(bReduceCPUtime);
+		//panel1.add(bReduceCPUtime);
 		//panel1.add(bShowMem);
 		panel1.add(bReset);
 		panel1.add(bExit); 
