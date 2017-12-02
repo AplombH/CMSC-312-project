@@ -255,8 +255,8 @@ public class OSProcessAD{
         }
 
     public String consultMem(){
-		str = "Ram is :" + memory.getRam() +
-		 "\n VRam is :" + memory.getVRam();
+		str = "\n Ram is :" + memory.getRam() +
+		 "\nVRam is :" + memory.getVRam();
 
 		return str; 
 	}

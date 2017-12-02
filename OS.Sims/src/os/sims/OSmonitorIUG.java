@@ -179,6 +179,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		//while(numOfCycles != 0){
 		if(numOfCycles != 0){
 			data = processAD.consult();
+			data = "CYCLES: "+ numOfCycles + "\nMEMORY: "+ processAD.consultMem() +"\n"+data;
 			taMonitor.setText(data);
 			//HERE WE RUN THE CPU
 			numOfCycles = numOfCycles - 1;
@@ -187,6 +188,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		if(numOfCycles == 0){
 			numOfCycles = Integer.parseInt(JOptionPane.showInputDialog("How many MORE cycles do yuo wish to have?"));
 		}
+		
 		return numOfCycles;
 	}
 
