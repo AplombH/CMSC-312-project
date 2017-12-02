@@ -31,7 +31,7 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 
 	private JButton bCreaP, bCreaIn, bTerminate, bExit;
 	private JButton bNewTxt, bCreaRand, bConsult, bConsultByName;
-	private JButton bReduceCPUtime, bConsByParentP, bShowMem, bReset;
+	private JButton bReduceCPUtime, bConsByParentP, bShowMem;
 	private JTextArea taData, taMonitor;
 
 	private OSProcessAD processAD = new OSProcessAD();
@@ -65,7 +65,6 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		bConsByParentP = new JButton("Search by Parent");
 		bReduceCPUtime = new JButton("Reduce CPUtime");
 		bShowMem	= new JButton("Show Memory");
-		bReset = new JButton("Reset");
 
 		bCreaP.addActionListener(this);
 		bCreaIn.addActionListener(this);
@@ -77,7 +76,6 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		bConsByParentP.addActionListener(this);
 		bReduceCPUtime.addActionListener(this);
 		bShowMem.addActionListener(this);
-		bReset.addActionListener(this);
 
 		taData = new JTextArea(10,10);
 		taMonitor = new JTextArea(32,50);
@@ -112,9 +110,8 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		panel1.add(bConsByParentP);
 		panel1.add(bTerminate);
 		panel1.add(bCreaRand);
-		//panel1.add(bReduceCPUtime);
-		//panel1.add(bShowMem);
-		panel1.add(bReset);
+		panel1.add(bReduceCPUtime);
+		panel1.add(bShowMem);
 		panel1.add(bExit); 
 
 		//panel3.add(panelProcessTracker);
@@ -196,6 +193,9 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 			//HERE WE RUN THE CPU
 			numOfCycles = numOfCycles - 1;
 		}
+		
+		processAD.addFirst4ProcessesToCPU();
+		processAD.runCPUinAD();
 
 		if(numOfCycles == 0){
 			numOfCycles = Integer.parseInt(JOptionPane.showInputDialog("How many MORE cycles do yuo wish to have?"));
@@ -371,11 +371,6 @@ public class OSmonitorIUG extends JFrame implements ActionListener
 		if(e.getSource() == bShowMem){
 			answer = processAD.consultMem();
 			taData.setText(answer);
-		}
-
-		if(e.getSource() == bReset){
-			data = processAD.resetLinkedList();
-			taData.setText(data);
 		}
 
 		if(e.getSource() == bExit)
