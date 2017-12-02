@@ -33,7 +33,7 @@ public class OSSims extends TimerTask{
 
   @Override
   public void run(){
-  	monIUG.refreshMonitor();
+  	monIUG.refreshMonitor(); 
   }
 
     public static void main(String[] args) {

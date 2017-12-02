@@ -2,30 +2,20 @@ package os.sims;
 
 /**
  * @author Aaron Kim
+ * edited and add-on by Aplomb
  */
 public class CPU extends Thread {
-	
-	int counter1;
-	String str;
 
-	private NodeProcess run1 = null;
+	private NodeProcess run1 = null;//These simmulates the caches
 	private NodeProcess run2 = null;
 	private NodeProcess run3 = null;
 	private NodeProcess run4 = null;
 
-	int counter = 200;
 
-	public CPU() {
+	public CPU(){}// default constructor
+        
 
-	}
-
-	public CPU(String[] Core1Thred1, String str, int counter1) {
-		
-		this.counter1 = counter1;
-		this.str = str;
-	}
-
-	public void add(NodeProcess node1) {
+	public void add(NodeProcess node1) {//here is to find the available cpu resource and load the process
 		if (run1 == null)
 			setRun1(node1);
 		else if (run2 == null)
@@ -36,16 +26,13 @@ public class CPU extends Thread {
 			setRun4(node1);
 	}
 
-	public boolean isFull() {
+	public boolean isFull() {//here is when the cpu recources are full
 		if ((run1 == null) || (run2 == null) || (run3 == null) || (run4 == null))
 			return false;
 		else
 			return true;
 	}
 
-	public void setCounter(int count) {
-		this.counter = count;
-	}
 
 	/**
 	 * @return the run1
