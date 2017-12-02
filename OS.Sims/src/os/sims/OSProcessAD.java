@@ -229,8 +229,15 @@ public class OSProcessAD{
 
 	public String terminateProcess(){
 
-		memory.del4Mem(Integer.parseInt(actual.getPMainMemory()));
-		
+		str  = actual.getPState();
+
+		if(str.equals("INTERRUPT")){
+			memory.io4Mem(Integer.parseInt(actual.getPMainMemory()));
+		}
+		else{
+			memory.del4Mem(Integer.parseInt(actual.getPMainMemory()));
+		}
+
 		if(first == actual)
 			first = first.getNext();
 		else
