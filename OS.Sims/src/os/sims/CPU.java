@@ -130,25 +130,25 @@ public class CPU extends Thread {
 	public void run() {
 
 		// System.out.println("BEFORE TEST: " + run1.toString());
-		//if (interrupt == null) {
+		if (interrupt == null) {
 			t1.run();
 			t2.run();
 			t3.run();
 			t4.run();
-		//}
+		}
 
 		// Pretend this is thread1
-		//else {
-		//	int cpuTimeI = interrupt.getPCPUtimeInt();
-		//	cpuTimeI--;
-		//	interrupt.setPCPUtimeInt(cpuTimeI);
-		//	//System.out.println("CPU TIME LEFT: " + cpuTimeI);
-		//	//System.out.println("AFTER TEST INTERRUPT: " + interrupt.toString());
-		//	if (interrupt.getPCPUtimeInt() == 0) {
-		//		interrupt.setPState("EXIT");
-		//		interrupt = null;
-		//	}
-		//}
+		else {
+			int cpuTimeI = interrupt.getPCPUtimeInt();
+			cpuTimeI--;
+			interrupt.setPCPUtimeInt(cpuTimeI);
+			//System.out.println("CPU TIME LEFT: " + cpuTimeI);
+			//System.out.println("AFTER TEST INTERRUPT: " + interrupt.toString());
+			if (interrupt.getPCPUtimeInt() == 0) {
+				interrupt.setPState("EXIT");
+				interrupt = null;
+			}
+		}
 	}
 
 	// my first thread
