@@ -1,5 +1,5 @@
 
-//package os.sims;
+package os.sims;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;

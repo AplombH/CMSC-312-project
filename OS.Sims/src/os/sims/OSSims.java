@@ -9,6 +9,7 @@
 
 
 package os.sims;
+
 import java.util.Scanner;
 import java.util.Random;
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class OSSims extends TimerTask{
 
      Timer timer = new Timer(true);
 
-     timer.scheduleAtFixedRate(ossims, 0, 2*1000);
+     timer.scheduleAtFixedRate(ossims, 0, 4*1000);
     }
     
 }

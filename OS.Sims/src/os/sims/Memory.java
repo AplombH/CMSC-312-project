@@ -62,4 +62,6 @@ public class Memory {
     
     public int getRam(){return Ram;}
     
+    public void resetMem(){Ram = 4096000; VRam = 4096000; }
+    
 }
