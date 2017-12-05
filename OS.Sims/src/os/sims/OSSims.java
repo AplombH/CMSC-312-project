@@ -46,7 +46,7 @@ public class OSSims extends TimerTask{
 
      Timer timer = new Timer(true);
 
-     timer.scheduleAtFixedRate(ossims, 0, 4*1000);
+     timer.scheduleAtFixedRate(ossims, 0, 1*1000);
     }
     
 }
